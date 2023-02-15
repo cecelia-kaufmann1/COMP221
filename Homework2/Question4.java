@@ -1,20 +1,83 @@
+/*Author: Cecelia Kaufmann
+Help from Daniela and Lilly */ 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Timer;
 
-/* You should develop a program that analyzes the performance of add and delete operations on lists. I
-would like you to compare the performance of adding and removing to the front, back, and middle of
-a list, by filling in the table below. */
+public class Question4 {
+    public static void main(String[] args){
+        List<Integer> arrayL = new ArrayList();
+        long begintime = System.nanoTime(); 
+        for (int i = 0; i < 10; i++) {
+            //here is where you would insert the method and the n
+            //removeLast(100000);
+        }
+        long stopTime = System.nanoTime();
+        System.out.println("The time was: " + (stopTime-begintime)/10);
+    }
 
+    // method to add to the beginning of the list
+    public static void beginningAdd (List<Integer> arrayL, int n){
+        for (int i = 0; i < n; i++) {
+            arrayL.add(0, 0);        
+        }
+    }
 
-//For each cell of the table, you should perform the following steps:
-//Repeat this process 10 times, and take the overall average time:
-//– If you are timing deletes, fill the list up to the specified size (you are free to use random numbers,
-//the same number, etc).
-//– Start the timer (you can look up the appropriate timer class for your language)
-//– Perform the requested operation n times. If the operation is an add, your data structure will grow
-//from size 0 to size n. If your operation is a delete, your data structure will shrink from size n to
-//size 0.
-//– Stop the timer.
-//– Calculate the time per operation by dividing the elapsed time by n.
-//When you are done filling out the table, write a few brief statements analyzing what you see. Are the
-//values what you expected? Did anything surprise you?
+    // method to add to the middle of the list
+    public static void middleAdd(List<Integer> arrayL, int n){
+        for (int i = 0; i <= n; i++) {
+            arrayL.add(arrayL.size()/2, 1);     
+        }
+    }
 
-// create a method 
+    // method to add to the end of the list
+    public static void lastAdd (List<Integer> arrayL, int n){
+        Integer last = (arrayL.size()-1);
+        for (int i = 0; i <= last; i++) {
+            arrayL.add(last,n);
+            last = (arrayL.size()-1);         
+        }
+    }
+
+    // creates a new list that we can use in the remove methods
+    public static List<Integer> newList(int n){
+        List<Integer> arrayL = new ArrayList();
+        for (int i = 0; i < n; i++) {
+            arrayL.add(1);      
+        }
+        return arrayL;
+    }
+
+    // method to remove from the front of the list
+    public static void removeFront (int n){
+        List<Integer> arrayL = newList(n);
+        for (int i = 0; i <= arrayL.size()-1; i++) {
+            arrayL.remove(0);        
+        }
+    }
+
+    // method to remove from the middle of the list
+    public static void removeMiddle(int n){
+        List<Integer> arrL = newList(n);
+        Integer middle = ((arrL.size()/2));
+        Integer midPosition = middle;
+        for (int i = 0; i <= arrL.size(); i++) {
+            Math.round(midPosition);
+            arrL.remove(midPosition);
+            middle = ((arrL.size()-1/2));
+            midPosition = middle;      
+        }
+    }
+
+    // method to remove from the end of the list
+    public static void removeLast (int n){
+        List<Integer> arrayList = newList(n);
+        Integer last = (arrayList.size()-1);
+        for (int i = 0; i <= last; i++) {
+            arrayList.remove(last);
+            last = (arrayList.size()-1);         
+        }
+    }
+}
